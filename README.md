@@ -1,5 +1,7 @@
 # vue-admin
 
+`yarn add -D sass-loader node-sass`
+
 ## Project setup
 ```
 yarn install
