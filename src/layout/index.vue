@@ -1,16 +1,22 @@
 <template>
     <div :class="classObj" class="app-wrapper">
-        <navbar />
+        <sidebar class="sidebar-container" />
+        <div class="main-container">
+          <div>
+            <navbar />
+          </div>
+        </div>
     </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import { Navbar } from './components'
+import { Navbar, Sidebar } from './components'
 export default {
   name: 'Layout',
   components: {
-    Navbar
+    Navbar,
+    Sidebar
   },
   computed: {
     ...mapState({
