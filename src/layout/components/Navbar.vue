@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-      <hamburger id="hamburger-container" :is-active="true" class="hamburger-container" />
+      <hamburger id="hamburger-container" :is-active="true" class="hamburger-container" @toggleClick="toggleSideBar"/>
   </div>
 </template>
 
@@ -10,6 +10,11 @@ export default {
   components: {
     Hamburger
   },
+  methods: {
+    toggleSideBar() {
+      this.$store.dispatch('app/toggleSideBar')
+    }
+  }
 }
 </script>
 

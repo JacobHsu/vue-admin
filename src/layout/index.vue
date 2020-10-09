@@ -1,15 +1,28 @@
 <template>
-    <div class="app-wrapper">
+    <div :class="classObj" class="app-wrapper">
         <navbar />
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { Navbar } from './components'
 export default {
   name: 'Layout',
   components: {
     Navbar
+  },
+  computed: {
+    ...mapState({
+      sidebar: state => state.app.sidebar
+    }),
+    classObj() {
+      return {
+        hideSidebar: !this.sidebar.opened,
+        openSidebar: this.sidebar.opened,
+        withoutAnimation: this.sidebar.withoutAnimation
+      }
+    }
   },
 }
 </script>
