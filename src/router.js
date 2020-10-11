@@ -7,7 +7,7 @@ Vue.use(Router)
 /* Layout */
 import Layout from '@/layout'
 
-const constantRoutes = [
+export const constantRoutes = [
   {
     path: '/',
     name: 'home',
@@ -39,6 +39,15 @@ const constantRoutes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
   }
+]
+
+/**
+ * asyncRoutes
+ * the routes that need to be dynamically loaded based on user roles
+ */
+export const asyncRoutes = [
+  // 404 page must be placed at the end !!!
+  { path: '*', redirect: '/404', hidden: true }
 ]
 
 export default new Router({
