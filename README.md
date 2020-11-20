@@ -75,6 +75,65 @@ http://localhost:8080/dev-api/vue-element-admin/user/info
 http://localhost:8888/dev-api/vue-element-admin/user/login
 > {"code":20000,"data":{"token":"admin-token"}}
 
+## login
+
+src\views\login\index.vue
+
+```js
+    handleLogin() {
+      this.$refs.loginForm.validate(valid => {
+        if (valid) {
+          this.loading = true
+          this.$store.dispatch('user/login', this.loginForm)  //api
+```
+
+src\store\modules\user.js
+
+```js
+import { login, logout, getInfo } from '@/api/user'
+const actions = {
+  // user login
+  login({ commit }, userInfo) {
+    const { username, password } = userInfo
+    return new Promise((resolve, reject) => {
+      login({ username: username.trim(), password: password }).then(response => {
+        const { data } = response
+        commit('SET_TOKEN', data.token)
+        setToken(data.token)
+        resolve()
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+```
+
+src\api\user.js
+
+```js
+import request from '@/utils/request'
+export function login(data) {
+  // http://localhost:8888/dev-api/vue-element-admin/user/login
+
+  return request({
+    url: '/vue-element-admin/user/login',
+    method: 'post',
+    data
+  })
+}
+```
+
+src\utils\request.js
+
+```js
+// create an axios instance
+const service = axios.create({
+  baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
+  // withCredentials: true, // send cookies when cross-domain requests
+  timeout: 5000 // request timeout
+})
+```
+
 ## Project setup
 ```
 yarn install

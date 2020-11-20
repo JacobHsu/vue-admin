@@ -32,7 +32,7 @@ router.beforeEach(async(to, from, next) => {
       if (hasRoles) {
         next()
       } else {
-         /*
+         
         try {
           // get user info
           // note: roles must be a object array! such as: ['admin'] or ,['developer','editor']
@@ -54,7 +54,7 @@ router.beforeEach(async(to, from, next) => {
           next(`/login?redirect=${to.path}`)
           NProgress.done()
         }
-         */
+         
       }
      
     }
