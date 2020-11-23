@@ -134,6 +134,16 @@ const service = axios.create({
 })
 ```
 
+## Sidebar
+
+store\modules\permission.js
+
+```js
+import { asyncRoutes, constantRoutes } from '@/router'
+
+ state.routes = constantRoutes.concat(routes)
+```
+
 ## Project setup
 ```
 yarn install
