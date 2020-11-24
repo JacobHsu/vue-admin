@@ -5,16 +5,18 @@
           <div>
             <navbar />
           </div>
+          <app-main />
         </div>
     </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import { Navbar, Sidebar } from './components'
+import {  AppMain, Navbar, Sidebar } from './components'
 export default {
   name: 'Layout',
   components: {
+    AppMain,
     Navbar,
     Sidebar
   },
